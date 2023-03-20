@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
 export const verifyToken = (req, res, next) => {
   try {
-    let token = req.headers("Authorization");
+    let token = req.headers.authorization;
     if (!token) {
-      res.status(401).json("You are not authenticated");
+      return res.status(401).json("You are not authenticated");
     }
     if (token.startsWith("Bearer ")) {
       token = token.slice(7, token.length).trimLeft();
