@@ -44,7 +44,7 @@ export const getFeedPosts = async (req, res) => {
 export const getUserPosts = async (req, res) => {
   try {
     const { userId } = req.params;
-    const posts = PostModel.findById({ userId });
+    const posts = await PostModel.find({ userId }).sort({ createdAt: -1 });
     res.status(200).json(posts);
   } catch (error) {
     return res.status(404).json({ message: error.message });
