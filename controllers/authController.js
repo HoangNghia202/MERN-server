@@ -33,6 +33,7 @@ export const register = async (req, res) => {
       location,
       occupation,
       viewedProfile: Math.floor(Math.random() * 100),
+      friendRequests: [],
       impression: Math.floor(Math.random() * 100),
     });
     const saveUser = await newUser.save();

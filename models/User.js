@@ -38,6 +38,10 @@ const UserSchema = mongoose.Schema(
     location: String,
     occupation: String,
     viewedProfile: Number,
+    friendRequests: {
+      type: Array,
+      default: [],
+    },
     impression: Number,
   },
   { timestamps: true }

@@ -31,10 +31,7 @@ export const createPost = async (req, res) => {
 export const getFeedPosts = async (req, res) => {
   try {
     //find by order of date
-
     const post = await PostModel.find().sort({ createdAt: -1 });
-    console.log("post>>>>", post);
-
     return res.status(200).json(post);
   } catch (error) {
     return res.status(404).json({ message: error.message });
