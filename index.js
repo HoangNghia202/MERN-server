@@ -55,13 +55,17 @@ app.use("/user", userRoutes);
 app.use("/posts", postRoutes);
 // MONGO SETUP
 const PORT = process.env.PORT || 5000;
+const CYCLIC_URL = process.env.CYCLIC_URL || "http://localhost:5000";
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+    // app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+    app.listen(process.env.CYCLIC_URL, () =>
+      console.log(`Server running on port: ${CYCLIC_URL}`)
+    );
     // User.insertMany(users);
     // Post.insertMany(posts);
   })
