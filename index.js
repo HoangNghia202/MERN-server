@@ -55,7 +55,7 @@ app.use("/user", userRoutes);
 app.use("/posts", postRoutes);
 // MONGO SETUP
 const PORT = process.env.PORT || 5000;
-const CYCLIC_URL = process.env.CYCLIC_URL || "http://localhost:5000";
+const URL_SERVER = process.env.CYCLIC_URL || process.env.PORT || 5000;
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -63,8 +63,8 @@ mongoose
   })
   .then(() => {
     // app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
-    app.listen(process.env.CYCLIC_URL, () =>
-      console.log(`Server running on port: ${CYCLIC_URL}`)
+    app.listen(URL_SERVER, () =>
+      console.log(`Server running on port: ${URL_SERVER}`)
     );
     // User.insertMany(users);
     // Post.insertMany(posts);
