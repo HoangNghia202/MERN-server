@@ -48,14 +48,16 @@ const upload = multer({ storage });
 // ROUTE WITH FILE
 app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
-
+app.get("/", (req, res) => {
+  res.send("<h1>HELLO, THIS IS SOCIOPEDIA API</h1>");
+});
 //ROUTES
 app.use("/auth", AuthRoutes);
 app.use("/user", userRoutes);
 app.use("/posts", postRoutes);
 // MONGO SETUP
 const PORT = process.env.PORT || 5000;
-const URL_SERVER = process.env.CYCLIC_URL || process.env.PORT || 5000;
+const URL_SERVER = process.env.PORT || 5000;
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
